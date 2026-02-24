@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Le Chatelier</title>
+
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    background:linear-gradient(to right,#1d2671,#c33764);
+    color:white;
+    margin:0;
+    padding:10px;
+}
+
+/* ⭐ RESPONSIVE CONTAINER */
+.container{
+    background:white;
+    color:black;
+    width:100%;
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+    box-sizing:border-box;
+}
+
+/* ⭐ BUTTON FLEX */
+button{
+    padding:10px 16px;
+    margin:8px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    max-width:100%;
+}
+
+/* ⭐ MOBILE STACK */
+@media(max-width:600px){
+button{
+    display:block;
+    width:100%;
+    margin:8px 0;
+}
+}
+
+.right{background:#2ecc71;color:white;}
+.left{background:#e74c3c;color:white;}
+.reset{background:#3498db;color:white;}
+
+#score{
+    font-size:20px;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+#feedback{
+    font-size:18px;
+    margin-top:10px;
+    height:30px;
+}
+
+#timer{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🎯 Geser atau Gagal!</h2>
+<p>Pilih arah pergeseran kesetimbangan yang benar.</p>
+
+<div id="timer">Waktu: 30</div>
+
+<div id="question"></div>
+
+<button class="left" onclick="answer('kiri')">⬅ Geser ke Kiri</button>
+<button class="right" onclick="answer('kanan')">Geser ke Kanan ➡</button>
+
+<div id="feedback"></div>
+<div id="score">Skor: 0</div>
+
+<br>
+
+<button class="reset" onclick="startGame()">Main Lagi</button>
+
+</div>
+
+<script>
+
+let questions=[
+{q:"Konsentrasi pereaksi ditambah",a:"kanan"},
+{q:"Tekanan diperbesar (mol kiri > mol kanan)",a:"kanan"},
+{q:"Volume diperbesar (mol kiri > mol kanan)",a:"kiri"},
+{q:"Suhu dinaikkan (reaksi eksoterm)",a:"kiri"},
+{q:"Penambahan air pada sistem kobalt",a:"kiri"}
+];
+
+let current=0;
+let score=0;
+let time=30;
+let interval;
+
+function startGame(){
+score=0;
+current=0;
+time=30;
+
+document.getElementById("score").innerHTML="Skor: 0";
+document.getElementById("feedback").innerHTML="";
+
+nextQuestion();
+
+clearInterval(interval);
+
+interval=setInterval(()=>{
+time--;
+document.getElementById("timer").innerHTML="Waktu: "+time;
+
+if(time<=0){
+clearInterval(interval);
+document.getElementById("question").innerHTML="⏰ Waktu Habis!";
+}
+
+},1000);
+}
+
+function nextQuestion(){
+if(current<questions.length){
+document.getElementById("question").innerHTML=questions[current].q;
+}else{
+document.getElementById("question").innerHTML="🎉 Game Selesai!";
+clearInterval(interval);
+}
+}
+
+function answer(pilihan){
+
+if(current>=questions.length) return;
+
+if(pilihan===questions[current].a){
+score+=10;
+document.getElementById("feedback").innerHTML="✅ Benar!";
+}else{
+score-=5;
+document.getElementById("feedback").innerHTML="❌ Salah!";
+}
+
+document.getElementById("score").innerHTML="Skor: "+score;
+
+current++;
+
+setTimeout(()=>{
+document.getElementById("feedback").innerHTML="";
+nextQuestion();
+},700);
+}
+
+startGame();
+
+</script>
+
+</body>
+</html>

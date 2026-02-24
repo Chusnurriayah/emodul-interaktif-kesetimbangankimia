@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+    margin:0;
+    padding:40px 15px;
+    font-family:'Poppins', sans-serif;
+    background:
+    radial-gradient(circle at 20% 20%, #dbeafe 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, #c7d2fe 0%, transparent 40%),
+    linear-gradient(135deg,#eef2ff,#e0e7ff);
+}
+
+/* container */
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+/* card utama */
+.card{
+    background:rgba(255,255,255,0.65);
+    backdrop-filter:blur(14px);
+    padding:55px 55px;
+    border-radius:40px;
+    border:2px solid rgba(255,255,255,0.7);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.12),
+        inset 0 0 0 1px rgba(255,255,255,0.4);
+    position:relative;
+    animation:fadeIn 1s ease;
+    overflow:hidden;
+}
+
+/* shimmer border */
+.card:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:40px;
+    padding:2px;
+    background:linear-gradient(120deg,#6366f1,#60a5fa,#6366f1);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+}
+
+/* animasi */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* title capsule */
+.title{
+    text-align:center;
+    font-size:24px;
+    font-weight:600;
+    margin-bottom:35px;
+    color:white;
+    background:linear-gradient(135deg,#4f46e5,#3b82f6);
+    padding:15px 25px;
+    border-radius:999px;
+    box-shadow:0 8px 20px rgba(79,70,229,0.35);
+    letter-spacing:0.5px;
+}
+
+/* content */
+.content{
+    text-align:justify;
+    line-height:1.95;
+    color:#1e293b;
+    font-size:16px;
+    background:rgba(255,255,255,0.45);
+    padding:25px 30px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* signature */
+.signature{
+    margin-top:45px;
+    text-align:right;
+    font-weight:500;
+    color:#1e293b;
+}
+
+/* icon dekoratif */
+.icon{
+    position:absolute;
+    bottom:-20px;
+    left:-15px;
+    font-size:90px;
+    color:#6366f1;
+    opacity:0.18;
+    transform:rotate(-10deg);
+}
+
+/* icon kanan atas */
+.icon2{
+    position:absolute;
+    top:-15px;
+    right:-15px;
+    font-size:70px;
+    color:#3b82f6;
+    opacity:0.15;
+    transform:rotate(12deg);
+}
+
+/* responsive */
+@media(max-width:600px){
+    .card{
+        padding:35px 25px;
+    }
+    .content{
+        padding:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<div class="title">
+<i class="fa-solid fa-book-open"></i> KATA PENGANTAR
+</div>
+
+<div class="content">
+Segala puji dan syukur atas kehadirat Allah SWT karena berkat rahmat dan hidayah-Nya, 
+serta shalawat dan salam tetap tercurahkan kepada Nabi Muhammad SAW sehingga penyusunan 
+bahan ajar E-Modul ini dapat terselesaikan dengan baik.  
+
+E-Modul ini merupakan bahan ajar sebagai perangkat pendukung belajar bagi peserta didik 
+untuk mencapai kompetensi pengetahuan dan keterampilan dalam pembelajaran. 
+E-Modul berbasis <i>Nature of Science (NoS)</i> ini diharapkan dapat meningkatkan 
+kemampuan literasi peserta didik dalam pembelajaran kimia kelas XI, 
+khususnya pada materi kesetimbangan kimia.  
+
+Penulis mengucapkan terima kasih kepada seluruh pihak yang telah membantu 
+tersusunnya modul ini. Penulis menyadari bahwa modul ini masih jauh dari sempurna, 
+oleh karena itu kritik dan saran yang membangun sangat diharapkan 
+demi peningkatan kualitas e-modul ini di masa yang akan datang.  
+
+Semoga modul ini dapat memberikan manfaat bagi semua pihak, 
+khususnya bagi peserta didik agar dapat memahami materi kesetimbangan kimia 
+secara lebih mendalam dan bermakna.
+</div>
+
+<div class="signature">
+Tulunggagung, 9 Februari 2026<br><br>
+Penyusun
+</div>
+
+<div class="icon">
+<i class="fa-solid fa-flask"></i>
+</div>
+
+<div class="icon2">
+<i class="fa-solid fa-atom"></i>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

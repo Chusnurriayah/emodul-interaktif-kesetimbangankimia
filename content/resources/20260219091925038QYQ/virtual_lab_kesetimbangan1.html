@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  font-family:'Comic Sans MS',sans-serif;
+  background:linear-gradient(to right,#c6f3ff,#fce4ff);
+  margin:0;
+  padding:10px;
+}
+h2{text-align:center;color:#333;}
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.panel{
+  background:white;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+  padding:15px;
+  margin:10px;
+}
+#reactionCanvas{
+  background:#ffffff;
+  border:4px solid #00bcd4;
+  border-radius:15px;
+}
+button{
+  padding:8px 14px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#7b1fa2;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{background:#4a0072;}
+.status{font-weight:bold;color:green;}
+</style>
+</head>
+
+<body>
+
+<h2>🔬 Virtual Lab Kesetimbangan Kimia</h2>
+
+<div class="container">
+
+<div class="panel">
+<h3>Ruang Reaksi</h3>
+<canvas id="reactionCanvas" width="420" height="300"></canvas>
+<p class="status" id="statusText"></p>
+</div>
+
+<div class="panel">
+<h3>Grafik Perubahan Partikel</h3>
+<canvas id="graphCanvas" width="400" height="300"></canvas>
+</div>
+
+</div>
+
+<div class="panel" style="text-align:center;">
+<h3>Kontrol</h3>
+
+<button onclick="setMode('oneway')">Reaksi Satu Arah</button>
+<button onclick="setMode('twoway')">Reaksi Dua Arah</button>
+
+<button onclick="setSystem('closed')">Sistem Tertutup</button>
+<button onclick="setSystem('open')">Sistem Terbuka</button>
+
+<button onclick="setPhase('homogen')">Mode Homogen</button>
+<button onclick="setPhase('heterogen')">Mode Heterogen</button>
+
+<button onclick="start()">Mulai</button>
+<button onclick="resetSim()">Reset</button>
+
+<br><br>
+
+Laju Maju:
+<input type="range" id="forwardRate" min="0" max="100" value="30">
+
+Laju Balik:
+<input type="range" id="reverseRate" min="0" max="100" value="30">
+
+</div>
+
+<script>
+let canvas=document.getElementById("reactionCanvas");
+let ctx=canvas.getContext("2d");
+
+let particles=[];
+let solids=[];
+let mode="oneway";
+let systemType="closed";
+let phase="homogen";
+let running=false;
+let time=0;
+
+class Particle{
+  constructor(type){
+    this.type=type;
+    this.x=Math.random()*400+10;
+    this.y=Math.random()*260+10;
+    this.vx=(Math.random()-0.5)*2;
+    this.vy=(Math.random()-0.5)*2;
+  }
+  move(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+
+    if(systemType==="closed"){
+      if(this.x<5||this.x>415)this.vx*=-1;
+      if(this.y<5||this.y>295)this.vy*=-1;
+    }
+    if(systemType==="open"){
+      if(this.type==="B"&&this.x>415){
+        particles.splice(particles.indexOf(this),1);
+      }
+    }
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,6,0,Math.PI*2);
+    ctx.fillStyle=this.type==="A"?"#2196f3":"#e53935";
+    ctx.fill();
+  }
+}
+
+function initParticles(){
+  particles=[];
+  solids=[];
+  for(let i=0;i<40;i++){
+    particles.push(new Particle("A"));
+  }
+
+  if(phase==="heterogen"){
+    for(let i=0;i<15;i++){
+      solids.push({
+        x:Math.random()*400+10,
+        y:270+Math.random()*20
+      });
+    }
+  }
+}
+
+function setMode(m){mode=m;}
+function setSystem(s){systemType=s;}
+function setPhase(p){
+  phase=p;
+  resetSim();
+}
+
+function start(){running=true;}
+
+function resetSim(){
+  running=false;
+  time=0;
+  graph.data.labels=[];
+  graph.data.datasets[0].data=[];
+  graph.data.datasets[1].data=[];
+  graph.update();
+  document.getElementById("statusText").innerText="";
+  initParticles();
+}
+
+function updateReaction(){
+  if(!running)return;
+
+  let forwardRate=document.getElementById("forwardRate").value/100;
+  let reverseRate=document.getElementById("reverseRate").value/100;
+
+  particles.forEach(p=>{
+    if(p.type==="A" && Math.random()<forwardRate*0.05){
+      p.type="B";
+    }
+    if(mode==="twoway" && p.type==="B" && Math.random()<reverseRate*0.05){
+      p.type="A";
+    }
+  });
+}
+
+function countParticles(){
+  let A=0,B=0;
+  particles.forEach(p=>{
+    if(p.type==="A")A++;
+    if(p.type==="B")B++;
+  });
+  return{A,B};
+}
+
+function animate(){
+  ctx.clearRect(0,0,420,300);
+
+  if(phase==="heterogen"){
+    solids.forEach(s=>{
+      ctx.beginPath();
+      ctx.rect(s.x,s.y,8,8);
+      ctx.fillStyle="#795548";
+      ctx.fill();
+    });
+  }
+
+  particles.forEach(p=>{
+    p.move();
+    p.draw();
+  });
+
+  updateReaction();
+  requestAnimationFrame(animate);
+}
+
+initParticles();
+animate();
+
+/* GRAFIK */
+let graphCtx=document.getElementById("graphCanvas").getContext("2d");
+let graph=new Chart(graphCtx,{
+  type:'line',
+  data:{
+    labels:[],
+    datasets:[
+      {label:'Jumlah A',borderColor:'#2196f3',data:[],fill:false},
+      {label:'Jumlah B',borderColor:'#e53935',data:[],fill:false}
+    ]
+  },
+  options:{animation:false,scales:{y:{beginAtZero:true}}}
+});
+
+setInterval(()=>{
+  if(!running)return;
+
+  time++;
+  let c=countParticles();
+
+  graph.data.labels.push(time);
+  graph.data.datasets[0].data.push(c.A);
+  graph.data.datasets[1].data.push(c.B);
+  graph.update();
+
+  if(mode==="twoway" && Math.abs(c.A-c.B)<2){
+    document.getElementById("statusText").innerText=
+    "✔ Kesetimbangan Dinamis (laju maju = laju balik)";
+  }
+
+},1000);
+
+</script>
+
+</body>
+</html>

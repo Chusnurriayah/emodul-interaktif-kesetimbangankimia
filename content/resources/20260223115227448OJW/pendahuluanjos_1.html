@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#dbeafe);
+    margin:0;
+    padding:30px 15px;
+}
+
+.wrapper{
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+}
+
+.card-header{
+    padding:20px 25px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:700;
+    font-size:20px;
+    color:#1e293b;
+}
+
+.card-header i{
+    margin-right:10px;
+    color:#e11d48;
+}
+
+/* tombol buka */
+.toggle-btn{
+    font-size:13px;
+    padding:6px 14px;
+    border-radius:999px;
+    border:none;
+    background:#fce7f3;
+    color:#be185d;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.toggle-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease, padding 0.3s ease;
+    padding:0 25px;
+    color:#334155;
+    line-height:1.8;
+}
+
+.card.active .card-content{
+    max-height:2000px;
+    padding:0 25px 25px 25px;
+}
+
+.card-content ul{
+    padding-left:20px;
+}
+
+.badge{
+    background:#fce7f3;
+    color:#be185d;
+    padding:4px 10px;
+    border-radius:12px;
+    font-size:12px;
+    margin-left:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<!-- IDENTITAS -->
+<div class="card">
+<div class="card-header">
+<div><i class="fa-solid fa-id-card"></i> IDENTITAS MODUL</div>
+<button class="toggle-btn">Buka</button>
+</div>
+<div class="card-content">
+<p><b>Judul:</b> E-Modul Interaktif Berbasis Nature of Science (Nos) Berbantuan Aplikasi Exe-Learning pada Materi Kesetimbangan Kimia</p>
+<p><b>Nama Penyusun:</b> Vika Chusnurri'ayah</p>
+<p><b>Dosen Pembimbing:</b> Ali Amirul Mu’minin, M.Pd</p>
+<p><b>Mata Pelajaran:</b> Kimia</p>
+<p><b>Kelas/Fase/Semester:</b> XI / F / Ganjil</p>
+<p><b>Alokasi Waktu:</b> 8 JP (3 Pertemuan @ 2 JP)</p>
+<p><b>Tahun Pelajaran:</b> 2025 / 2026</p>
+</div>
+</div>
+
+<!-- KARAKTERISTIK -->
+<div class="card">
+<div class="card-header">
+<div><i class="fa-solid fa-atom"></i> KARAKTERISTIK MATERI</div>
+<button class="toggle-btn">Buka</button>
+</div>
+<div class="card-content">
+<p>Materi kesetimbangan kimia mencakup pengetahuan konseptual, prosedural, dan metakognitif yang saling terintegrasi.</p>
+
+<p><b>Secara konseptual</b>, materi menuntut pemahaman keterkaitan antara reaksi reversible, kesetimbangan dinamis, tetapan kesetimbangan (Kc dan Kp), serta pergeseran kesetimbangan berdasarkan prinsip Le Chatelier. Peserta didik tidak hanya mengenali definisi, tetapi juga memahami hubungan sebab-akibat antar konsep dalam sistem kesetimbangan.</p>
+
+<p><b>Secara prosedural</b>, materi melibatkan kemampuan merepresentasikan reaksi kesetimbangan ke dalam persamaan matematis, menentukan nilai tetapan kesetimbangan dari data eksperimen, serta menganalisis perubahan kondisi sistem untuk memprediksi arah pergeseran kesetimbangan melalui langkah penyelesaian masalah ilmiah.</p>
+
+<p><b>Secara metakognitif</b>, pembelajaran menuntut peserta didik merefleksikan strategi berpikir dalam memahami fenomena kesetimbangan, mengevaluasi hasil perhitungan dan prediksi yang dilakukan, serta mengaitkan konsep kesetimbangan dengan fenomena nyata sehingga terbentuk kesadaran akan proses belajar dan pemecahan masalah yang digunakan.</p>
+
+<p>Materi ini relevan dalam konteks industri (misalnya sintesis amonia), fenomena alam, dan sistem biologis seperti kesetimbangan pH darah. Tingkat kesulitan materi berada pada kategori sedang hingga tinggi karena melibatkan integrasi pemahaman konseptual, representasi matematis, serta analisis sistem dinamis.</p>
+</div>
+</div>
+
+<!-- CP -->
+<div class="card">
+<div class="card-header">
+<div><i class="fa-solid fa-clipboard-check"></i> CAPAIAN PEMBELAJARAN <span class="badge">Tahun 2025</span></div>
+<button class="toggle-btn">Buka</button>
+</div>
+<div class="card-content">
+<p>
+Pada akhir fase F, peserta didik mampu menganalisis hubungan struktur atom dengan sistem periodik unsur; membandingkan jenis ikatan kimia serta kaitannya dengan bentuk molekul dan gaya intermolekuler dalam memprediksi sifat fisik materi; mengaitkan perubahan entalpi standar dari suatu reaksi kimia dengan sumber energi yang ada di lingkungan sekitar; menganalisis faktor-faktor yang mempengaruhi laju reaksi; menganalisis kesetimbangan kimia dan penerapannya; menjelaskan dayahantar listrik dan sifat koligatif larutan; menjelaskan sel elektrokimia dalam kehidupan sehari-hari; dan menjelaskan senyawa karbon dan makromolekul.
+</p>
+</div>
+</div>
+
+<!-- TUJUAN -->
+<div class="card">
+<div class="card-header">
+<div><i class="fa-solid fa-bullseye"></i> TUJUAN PEMBELAJARAN</div>
+<button class="toggle-btn">Buka</button>
+</div>
+<div class="card-content">
+<ul>
+<b>Pada akhir pembelajaran kesetimbangan kimia, peserta didik diharapkan mampu:</b>
+<li>Menjelaskan konsep kesetimbangan kimia sebagai kesetimbangan dinamis.</li>
+<li>Menentukan tetapan kesetimbangan suatu reaksi kimia.</li>
+<li>Menganalisis dan memprediksi pergeseran kesetimbangan berdasarkan prinsip Le Chatelier.</li>
+</ul>
+</div>
+</div>
+
+<!-- ATP -->
+<div class="card">
+<div class="card-header">
+<div><i class="fa-solid fa-route"></i> ALUR TUJUAN PEMBELAJARAN (ATP)</div>
+<button class="toggle-btn">Buka</button>
+</div>
+<div class="card-content">
+<ul>
+<li>Peserta didik dapat menjelaskan konsep kesetimbangan kimia sebagai kesetimbangan dinamis serta karakteristik sistem setimbang.</li>
+<li>Peserta didik dapat mengklasifikasikan kesetimbangan kimia berdasarkan wujud zat yang terlibat.</li>
+<li>Peserta didik dapat menentukan tetapan kesetimbangan suatu reaksi kimia.</li>
+<li>Peserta didik dapat menjelaskan hubungan antara tetapan kesetimbangan Kc dan Kp pada reaksi gas.</li>
+<li>Peserta didik dapat menganalisis prinsip Le Chatelier sebagai dasar pergeseran kesetimbangan.</li>
+<li>Peserta didik dapat memprediksi pergeseran kesetimbangan akibat perubahan kondisi sistem.</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+    const header = card.querySelector(".card-header");
+    const btn = card.querySelector(".toggle-btn");
+
+    header.addEventListener("click", () => {
+        card.classList.toggle("active");
+
+        if(card.classList.contains("active")){
+            btn.textContent = "Tutup";
+        }else{
+            btn.textContent = "Buka";
+        }
+    });
+});
+</script>
+
+</body>
+</html>

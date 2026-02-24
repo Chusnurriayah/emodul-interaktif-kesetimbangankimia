@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right,#dfe9ff,#f4f8ff);
+    text-align:center;
+    margin:0;
+    padding:10px;
+}
+
+.container{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    width:95%;
+    max-width:900px;
+    margin:auto;
+    box-sizing:border-box;
+}
+
+canvas{
+    width:100%;
+    max-width:800px;
+    height:300px;
+    border:2px solid #444;
+    background:#fff;
+    border-radius:10px;
+}
+
+button{
+    padding:10px 18px;
+    margin:5px;
+    font-size:15px;
+    background:#4b7bec;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#3867d6;
+}
+
+.dataBox{
+    margin-top:10px;
+    padding:10px;
+    background:#e6f0ff;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.sectionTitle{
+    background:#3867d6;
+    color:white;
+    padding:8px;
+    border-radius:8px;
+    margin-top:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>🧪 Lab Virtual Kesetimbangan Kimia</h2>
+<h3>N₂(g) + 3H₂(g) ⇌ 2NH₃(g)</h3>
+
+<div class="sectionTitle">Tahap Mencoba (Eksperimen Virtual)</div>
+
+<canvas id="box"></canvas>
+
+<div>
+<button onclick="start()">Mulai Reaksi</button>
+<button onclick="reset()">Reset</button>
+</div>
+
+<div class="dataBox" id="data"></div>
+
+<div class="sectionTitle">Hitung Tetapan Kesetimbangan</div>
+
+<button onclick="hitungKc()">Hitung Kc</button>
+<button onclick="hitungKp()">Hitung Kp</button>
+
+<div class="dataBox" id="hasil"></div>
+
+</div>
+
+<script>
+
+let N2=10;
+let H2=30;
+let NH3=0;
+
+let kf=0.0008;
+let kr=0.0004;
+
+let running=false;
+
+const canvas=document.getElementById("box");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 300;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function gambarPartikel(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<N2;i++){
+        ctx.fillStyle="blue";
+        ctx.beginPath();
+        ctx.arc(Math.random()*(canvas.width-20)+10,
+                Math.random()*(canvas.height-20)+10,
+                5,0,Math.PI*2);
+        ctx.fill();
+    }
+
+    for(let i=0;i<H2;i++){
+        ctx.fillStyle="green";
+        ctx.beginPath();
+        ctx.arc(Math.random()*(canvas.width-20)+10,
+                Math.random()*(canvas.height-20)+10,
+                4,0,Math.PI*2);
+        ctx.fill();
+    }
+
+    for(let i=0;i<NH3;i++){
+        ctx.fillStyle="red";
+        ctx.beginPath();
+        ctx.arc(Math.random()*(canvas.width-20)+10,
+                Math.random()*(canvas.height-20)+10,
+                6,0,Math.PI*2);
+        ctx.fill();
+    }
+
+    document.getElementById("data").innerHTML=
+    "N₂ (biru): "+N2.toFixed(0)+
+    " | H₂ (hijau): "+H2.toFixed(0)+
+    " | NH₃ (merah): "+NH3.toFixed(0);
+}
+
+function update(){
+    if(!running) return;
+
+    let forward=kf*N2*H2;
+    let reverse=kr*NH3;
+
+    N2+=-forward+reverse;
+    H2+=-3*forward+3*reverse;
+    NH3+=2*forward-2*reverse;
+
+    if(N2<0)N2=0;
+    if(H2<0)H2=0;
+    if(NH3<0)NH3=0;
+
+    gambarPartikel();
+    requestAnimationFrame(update);
+}
+
+function start(){
+    running=true;
+    update();
+}
+
+function reset(){
+    N2=10;
+    H2=30;
+    NH3=0;
+    running=false;
+    gambarPartikel();
+    document.getElementById("hasil").innerHTML="";
+}
+
+function hitungKc(){
+    let kc=(NH3*NH3)/(N2*(H2*H2*H2));
+    document.getElementById("hasil").innerHTML=
+    "Nilai Kc = "+kc.toFixed(3);
+}
+
+function hitungKp(){
+    let R=0.082;
+    let T=300;
+    let deltaN=-2;
+    let kc=(NH3*NH3)/(N2*(H2*H2*H2));
+    let kp=kc*Math.pow((R*T),deltaN);
+    document.getElementById("hasil").innerHTML=
+    "Nilai Kp = "+kp.toFixed(3)+" (T=300K)";
+}
+
+gambarPartikel();
+
+</script>
+
+</body>
+</html>

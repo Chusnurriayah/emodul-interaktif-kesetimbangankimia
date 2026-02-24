@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right,#eef2ff,#dbeafe);
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+h2{text-align:center;}
+
+.question{
+    margin-bottom:20px;
+    padding:15px;
+    background:#f1f5ff;
+    border-radius:10px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{background:#1e40af;}
+
+.result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>🧪 Evaluasi Kesetimbangan Kimia</h2>
+
+<label>Nama:</label><br>
+<input type="text" id="nama" required><br><br>
+
+<label>Kelas:</label><br>
+<input type="text" id="kelas" required><br><br>
+
+<form id="quizForm">
+
+<!-- CONTOH 2 SOAL (ISI SAMPAI 20) -->
+
+<!-- SOAL 1 -->
+<div class="question">
+1. Berikut ini adalah ciri-ciri terjadinya reaksi kesetimbangan, kecuali …
+<br>
+<input type="radio" name="q1" value="a"> reaksi reversibel<br>
+<input type="radio" name="q1" value="b"> terjadi dalam ruang tertutup<br>
+<input type="radio" name="q1" value="c"> laju reaksi ke kiri sama dengan laju reaksi ke kanan<br>
+<input type="radio" name="q1" value="d"> reaksinya tidak dapat balik<br>
+<input type="radio" name="q1" value="e"> tidak terjadi perubahan makroskopis<br>
+</div>
+
+<!-- SOAL 2 -->
+<div class="question">
+2. 2CO(g) + O₂(g) ⇌ 2CO₂(g) ΔH = –x kJ/mol. Agar bergeser ke kanan, kecuali …
+<br>
+<input type="radio" name="q2" value="a"> konsentrasi CO ditambah<br>
+<input type="radio" name="q2" value="b"> volume diturunkan<br>
+<input type="radio" name="q2" value="c"> tekanan diturunkan<br>
+<input type="radio" name="q2" value="d"> konsentrasi O₂ ditambah<br>
+<input type="radio" name="q2" value="e"> suhu diturunkan<br>
+</div>
+
+<!-- SOAL 3 -->
+<div class="question">
+3. Faktor yang tidak mempengaruhi pergeseran kesetimbangan …
+<br>
+<input type="radio" name="q3" value="a"> konsentrasi<br>
+<input type="radio" name="q3" value="b"> katalisator<br>
+<input type="radio" name="q3" value="c"> suhu<br>
+<input type="radio" name="q3" value="d"> tekanan<br>
+<input type="radio" name="q3" value="e"> volume<br>
+</div>
+<!-- SOAL 4 -->
+<div class="question">
+4. Untuk reaksi 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), bentuk Kc yang benar adalah …
+<br>
+<input type="radio" name="q4" value="a"> [SO₃]² / ([SO₂]²[O₂])<br>
+<input type="radio" name="q4" value="b"> [SO₂]² / ([SO₃]²[O₂])<br>
+<input type="radio" name="q4" value="c"> [SO₃] / ([SO₂][O₂])<br>
+<input type="radio" name="q4" value="d"> [SO₂][O₂] / [SO₃]<br>
+<input type="radio" name="q4" value="e"> [SO₃]² / ([SO₂][O₂])<br>
+</div>
+
+<!-- SOAL 5 -->
+<div class="question">
+5. Jika suhu dinaikkan pada reaksi eksoterm, maka kesetimbangan akan bergeser ke arah …
+<br>
+<input type="radio" name="q5" value="a"> kanan<br>
+<input type="radio" name="q5" value="b"> kiri<br>
+<input type="radio" name="q5" value="c"> tetap<br>
+<input type="radio" name="q5" value="d"> tidak terpengaruh<br>
+<input type="radio" name="q5" value="e"> reaksi berhenti<br>
+</div>
+
+<!-- SOAL 6 -->
+<div class="question">
+6. Jika tekanan diperbesar pada reaksi gas, sistem akan bergeser ke arah jumlah mol gas yang …
+<br>
+<input type="radio" name="q6" value="a"> lebih besar<br>
+<input type="radio" name="q6" value="b"> lebih kecil<br>
+<input type="radio" name="q6" value="c"> sama<br>
+<input type="radio" name="q6" value="d"> tidak berubah<br>
+<input type="radio" name="q6" value="e"> tidak tentu<br>
+</div>
+
+<!-- SOAL 7 -->
+<div class="question">
+7. Reaksi setimbang disebut dinamis karena …
+<br>
+<input type="radio" name="q7" value="a"> reaksi berhenti<br>
+<input type="radio" name="q7" value="b"> konsentrasi berubah<br>
+<input type="radio" name="q7" value="c"> laju reaksi maju dan balik tetap berlangsung<br>
+<input type="radio" name="q7" value="d"> tidak terjadi reaksi<br>
+<input type="radio" name="q7" value="e"> zat habis bereaksi<br>
+</div>
+
+<!-- SOAL 8 -->
+<div class="question">
+8. Nilai Kc yang besar menunjukkan bahwa …
+<br>
+<input type="radio" name="q8" value="a"> reaksi dominan ke kiri<br>
+<input type="radio" name="q8" value="b"> reaksi dominan ke kanan<br>
+<input type="radio" name="q8" value="c"> reaksi tidak berlangsung<br>
+<input type="radio" name="q8" value="d"> tidak ada produk<br>
+<input type="radio" name="q8" value="e"> reaksi berhenti<br>
+</div>
+
+<!-- SOAL 9 -->
+<div class="question">
+9. Jika konsentrasi salah satu pereaksi ditambah, maka sistem akan …
+<br>
+<input type="radio" name="q9" value="a"> bergeser ke kiri<br>
+<input type="radio" name="q9" value="b"> bergeser ke kanan<br>
+<input type="radio" name="q9" value="c"> tetap<br>
+<input type="radio" name="q9" value="d"> berhenti<br>
+<input type="radio" name="q9" value="e"> tidak bereaksi<br>
+</div>
+
+<!-- SOAL 10 -->
+<div class="question">
+10. Hubungan antara Kp dan Kc dinyatakan dengan rumus …
+<br>
+<input type="radio" name="q10" value="a"> Kp = Kc(RT)<br>
+<input type="radio" name="q10" value="b"> Kp = Kc(RT)Δn<br>
+<input type="radio" name="q10" value="c"> Kp = Kc(RT)^Δn<br>
+<input type="radio" name="q10" value="d"> Kp = Kc / RT<br>
+<input type="radio" name="q10" value="e"> Kp = RT / Kc<br>
+</div>
+<!-- SOAL 11 -->
+<div class="question">
+11. Jika nilai Q < K, maka reaksi akan bergeser ke arah …
+<br>
+<input type="radio" name="q11" value="a"> kiri<br>
+<input type="radio" name="q11" value="b"> kanan<br>
+<input type="radio" name="q11" value="c"> tetap<br>
+<input type="radio" name="q11" value="d"> berhenti<br>
+<input type="radio" name="q11" value="e"> tidak bereaksi<br>
+</div>
+
+<!-- SOAL 12 -->
+<div class="question">
+12. Jika nilai Q > K, maka reaksi akan bergeser ke arah …
+<br>
+<input type="radio" name="q12" value="a"> kiri<br>
+<input type="radio" name="q12" value="b"> kanan<br>
+<input type="radio" name="q12" value="c"> tetap<br>
+<input type="radio" name="q12" value="d"> berhenti<br>
+<input type="radio" name="q12" value="e"> tidak bereaksi<br>
+</div>
+
+<!-- SOAL 13 -->
+<div class="question">
+13. Pada kesetimbangan kimia dalam sistem tertutup, yang tetap adalah …
+<br>
+<input type="radio" name="q13" value="a"> jumlah zat<br>
+<input type="radio" name="q13" value="b"> konsentrasi zat<br>
+<input type="radio" name="q13" value="c"> massa zat<br>
+<input type="radio" name="q13" value="d"> volume zat<br>
+<input type="radio" name="q13" value="e"> tekanan zat<br>
+</div>
+
+<!-- SOAL 14 -->
+<div class="question">
+14. Jika tekanan diperkecil pada reaksi gas, sistem akan bergeser ke arah jumlah mol gas yang …
+<br>
+<input type="radio" name="q14" value="a"> lebih kecil<br>
+<input type="radio" name="q14" value="b"> lebih besar<br>
+<input type="radio" name="q14" value="c"> tetap<br>
+<input type="radio" name="q14" value="d"> tidak berubah<br>
+<input type="radio" name="q14" value="e"> tidak tentu<br>
+</div>
+
+<!-- SOAL 15 -->
+<div class="question">
+15. Reaksi endoterm jika suhu dinaikkan akan bergeser ke arah …
+<br>
+<input type="radio" name="q15" value="a"> kiri<br>
+<input type="radio" name="q15" value="b"> kanan<br>
+<input type="radio" name="q15" value="c"> tetap<br>
+<input type="radio" name="q15" value="d"> tidak bereaksi<br>
+<input type="radio" name="q15" value="e"> berhenti<br>
+</div>
+
+<!-- SOAL 16 -->
+<div class="question">
+16. Jika konsentrasi produk ditambah, maka sistem akan …
+<br>
+<input type="radio" name="q16" value="a"> bergeser ke kanan<br>
+<input type="radio" name="q16" value="b"> bergeser ke kiri<br>
+<input type="radio" name="q16" value="c"> tetap<br>
+<input type="radio" name="q16" value="d"> berhenti<br>
+<input type="radio" name="q16" value="e"> tidak bereaksi<br>
+</div>
+
+<!-- SOAL 17 -->
+<div class="question">
+17. Nilai Kc hanya dipengaruhi oleh …
+<br>
+<input type="radio" name="q17" value="a"> tekanan<br>
+<input type="radio" name="q17" value="b"> konsentrasi<br>
+<input type="radio" name="q17" value="c"> suhu<br>
+<input type="radio" name="q17" value="d"> volume<br>
+<input type="radio" name="q17" value="e"> katalis<br>
+</div>
+
+<!-- SOAL 18 -->
+<div class="question">
+18. Peran katalis dalam reaksi kesetimbangan adalah …
+<br>
+<input type="radio" name="q18" value="a"> menggeser kesetimbangan<br>
+<input type="radio" name="q18" value="b"> mempercepat tercapainya kesetimbangan<br>
+<input type="radio" name="q18" value="c"> memperbesar nilai K<br>
+<input type="radio" name="q18" value="d"> memperkecil nilai K<br>
+<input type="radio" name="q18" value="e"> menghentikan reaksi<br>
+</div>
+
+<!-- SOAL 19 -->
+<div class="question">
+19. Jika ΔH negatif, maka reaksi tersebut bersifat …
+<br>
+<input type="radio" name="q19" value="a"> endoterm<br>
+<input type="radio" name="q19" value="b"> eksoterm<br>
+<input type="radio" name="q19" value="c"> netral<br>
+<input type="radio" name="q19" value="d"> tidak tentu<br>
+<input type="radio" name="q19" value="e"> setimbang<br>
+</div>
+
+<!-- SOAL 20 -->
+<div class="question">
+20. Kesetimbangan homogen adalah kesetimbangan yang semua zatnya berada pada fase …
+<br>
+<input type="radio" name="q20" value="a"> padat<br>
+<input type="radio" name="q20" value="b"> cair<br>
+<input type="radio" name="q20" value="c"> gas<br>
+<input type="radio" name="q20" value="d"> fase yang sama<br>
+<input type="radio" name="q20" value="e"> fase berbeda<br>
+</div>
+<br><br>
+<button type="button" onclick="kirimJawaban()">Kumpulkan Jawaban</button>
+
+</form>
+
+<div id="hasil" class="result"></div>
+
+<script>
+
+const webAppURL = "https://script.google.com/macros/s/AKfycbz9ChOoYqLaJEQUtj5PEySte4UvC9Xo3O1vIh8zt531NF-MWXPasdurEUl7cjusXr7m/exec";
+
+const kunciJawaban = {
+    q1:"d", q2:"c", q3:"b", q4:"a", q5:"b",
+    q6:"b", q7:"c", q8:"b", q9:"b", q10:"c",
+    q11:"b", q12:"a", q13:"b", q14:"b", q15:"b",
+    q16:"b", q17:"c", q18:"b", q19:"b", q20:"d"
+};
+
+function kirimJawaban(){
+
+    const nama = document.getElementById("nama").value.trim();
+    const kelas = document.getElementById("kelas").value.trim();
+
+    if(nama === "" || kelas === ""){
+        alert("Isi Nama dan Kelas terlebih dahulu.");
+        return;
+    }
+
+    let skor = 0;
+    const total = Object.keys(kunciJawaban).length;
+
+    for(const key in kunciJawaban){
+        const pilihan = document.querySelector('input[name="'+key+'"]:checked');
+        if(pilihan && pilihan.value === kunciJawaban[key]){
+            skor++;
+        }
+    }
+
+    document.getElementById("hasil").innerHTML =
+        "Skor Anda: " + skor + " / " + total;
+
+    const formData = new FormData();
+    formData.append("nama", nama);
+    formData.append("kelas", kelas);
+    formData.append("skor", skor);
+
+    fetch("https://script.google.com/macros/s/AKfycbz9ChOoYqLaJEQUtj5PEySte4UvC9Xo3O1vIh8zt531NF-MWXPasdurEUl7cjusXr7m/exec", {
+        method: "POST",
+        body: formData
+    });
+}
+
+</script>

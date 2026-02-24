@@ -1,0 +1,131 @@
+<div class="wrap"> 
+
+<h3>Kelompokkan reaksi kesetimbangan berikut menjadi homogen atau heterogen</h3>
+
+<div class="bank" id="bank">
+<div class="card" draggable="true">N₂(g) + 3H₂(g) ⇌ 2NH₃(g)</div>
+<div class="card" draggable="true">H₂(g) + I₂(g) ⇌ 2HI(g)</div>
+<div class="card" draggable="true">2SO₂(g) + O₂(g) ⇌ 2SO₃(g)</div>
+<div class="card" draggable="true">CO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g)</div>
+<div class="card" draggable="true">CH₃COOH(aq) ⇌ H⁺(aq) + CH₃COO⁻(aq)</div>
+
+<div class="card" draggable="true">CaCO₃(s) ⇌ CaO(s) + CO₂(g)</div>
+<div class="card" draggable="true">NH₄HS(s) ⇌ NH₃(g) + H₂S(g)</div>
+<div class="card" draggable="true">C(s) + CO₂(g) ⇌ 2CO(g)</div>
+<div class="card" draggable="true">Ca(OH)₂(s) ⇌ Ca²⁺(aq) + 2OH⁻(aq)</div>
+<div class="card" draggable="true">AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq)</div>
+</div>
+
+<div class="cols">
+<div class="drop" data-type="homogen">
+<h4>Kesetimbangan Homogen</h4>
+</div>
+
+<div class="drop" data-type="heterogen">
+<h4>Kesetimbangan Heterogen</h4>
+</div>
+</div>
+
+<button onclick="cek()">Cek Jawaban</button>
+<p id="hasil"></p>
+
+</div>
+
+<style>
+.wrap{font-family:Arial;max-width:900px;margin:auto}
+.bank{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.card{
+background:#fff;
+border:2px solid #ddd;
+padding:10px 14px;
+border-radius:10px;
+cursor:grab;
+box-shadow:0 3px 8px rgba(0,0,0,0.1)
+}
+.cols{display:flex;gap:20px}
+.drop{
+flex:1;
+min-height:220px;
+border:3px dashed #bbb;
+border-radius:12px;
+padding:10px;
+background:#f5f7ff
+}
+h4{text-align:center}
+button{margin-top:20px;padding:10px 20px;border:none;border-radius:8px;background:#4b6cff;color:white;cursor:pointer}
+</style>
+
+<script>
+let cards=document.querySelectorAll(".card");
+let drops=document.querySelectorAll(".drop");
+
+/* ===== DESKTOP DRAG ===== */
+cards.forEach(c=>{
+c.addEventListener("dragstart",e=>{
+e.dataTransfer.setData("text",e.target.innerText);
+})
+})
+
+drops.forEach(d=>{
+d.addEventListener("dragover",e=>e.preventDefault());
+d.addEventListener("drop",e=>{
+e.preventDefault();
+let text=e.dataTransfer.getData("text");
+let el=[...cards].find(x=>x.innerText===text);
+d.appendChild(el);
+})
+})
+
+/* ===== MOBILE TOUCH DRAG ===== */
+let dragged=null;
+
+cards.forEach(card=>{
+card.addEventListener("touchstart",e=>{
+dragged=card;
+card.style.opacity="0.6";
+});
+
+card.addEventListener("touchend",e=>{
+card.style.opacity="1";
+});
+});
+
+drops.forEach(drop=>{
+drop.addEventListener("touchmove",e=>{
+e.preventDefault();
+});
+
+drop.addEventListener("touchend",e=>{
+if(dragged){
+drop.appendChild(dragged);
+dragged.style.opacity="1";
+dragged=null;
+}
+});
+});
+
+/* ===== CEK JAWABAN ===== */
+const homogen=[
+"N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",
+"H₂(g) + I₂(g) ⇌ 2HI(g)",
+"2SO₂(g) + O₂(g) ⇌ 2SO₃(g)",
+"CO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g)",
+"CH₃COOH(aq) ⇌ H⁺(aq) + CH₃COO⁻(aq)"
+];
+
+function cek(){
+let benar=0;
+
+drops.forEach(d=>{
+let type=d.dataset.type;
+let isi=[...d.querySelectorAll(".card")].map(x=>x.innerText);
+
+isi.forEach(r=>{
+if(type==="homogen" && homogen.includes(r)) benar++;
+if(type==="heterogen" && !homogen.includes(r)) benar++;
+})
+})
+
+document.getElementById("hasil").innerHTML="Skor benar: "+benar+" / 10";
+}
+</script>

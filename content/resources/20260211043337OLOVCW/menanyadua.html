@@ -1,0 +1,57 @@
+<style>
+
+/* ===== WRAPPER RAPAT ===== */
+.exe-form-wrap{
+    margin-top:6px;
+    text-align:center;
+}
+
+/* ===== CAPSULE CTA ===== */
+.exe-form-capsule{
+    display:inline-block;
+    padding:12px 30px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#4f6fd6,#2f4aa8);
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    position:relative;
+    overflow:hidden;
+    transition:.25s;
+    box-shadow:0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* shimmer */
+.exe-form-capsule::after{
+    content:'';
+    position:absolute;
+    left:-60%;
+    top:0;
+    width:50%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,#ffffff66,transparent);
+    animation:exeShimmer 3.5s infinite;
+}
+
+/* hover */
+.exe-form-capsule:hover{
+    transform:scale(1.06);
+    background:linear-gradient(135deg,#2f4aa8,#1e3180);
+}
+
+/* anim */
+@keyframes exeShimmer{
+    0%{left:-60%;}
+    100%{left:120%;}
+}
+
+</style>
+
+
+<div class="exe-form-wrap">
+<a class="exe-form-capsule"
+href="https://forms.gle/TjPEmqLQGeaHKD268"
+target="_blank">
+📝 Klik untuk pengumpulan tugas
+</a>
+</div>
